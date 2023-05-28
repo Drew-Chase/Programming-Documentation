@@ -20,19 +20,43 @@
             }
           },
           {
-            "id": "545512db2d2d2464",
+            "id": "dbec3972a1437d6c",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "C++/spdlog/Getting Started.md",
+                "file": "C++/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "97e048d71f93ccde",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "C++/README.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          },
+          {
+            "id": "1191bdb47a3fe3c9",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
                 "mode": "source",
                 "source": false
               }
             }
           }
         ],
-        "currentTab": 1
+        "currentTab": 3
       }
     ],
     "direction": "vertical"
@@ -98,7 +122,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "C++/spdlog/Getting Started.md",
+                "file": "README.md",
                 "collapseAll": false,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -115,7 +139,7 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "C++/spdlog/Getting Started.md",
+                "file": "README.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               }
@@ -138,7 +162,7 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "C++/spdlog/Getting Started.md"
+                "file": "README.md"
               }
             }
           }
@@ -159,10 +183,15 @@
       "command-palette:Open command palette": false
     }
   },
-  "active": "545512db2d2d2464",
+  "active": "1191bdb47a3fe3c9",
   "lastOpenFiles": [
+    "C#/README.md",
+    "C++/README.md",
     "C++/VCPKG.md",
+    "README.md",
+    "C#",
     "C++/spdlog/Getting Started.md",
+    "C#",
     "C++/Untitled",
     "C++/spdlog",
     "C++/LibAV",
