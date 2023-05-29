@@ -20,7 +20,7 @@ To set a custom logging pattern with spdlog in C++, you can use the set\_pattern
 For example, to set a pattern that includes the log level, time, logger name, and log message, use the following code:
 
 ```cpp
-spdlog::set_pattern("[%L] [%T] [%n] %v");
+spdlog::set_pattern("[%l] [%T] [%n] %v");
 ```
 
 This will produce logs in the following format:

@@ -1,3 +1,7 @@
+---
+layout: landing
+---
+
 # Creating Your First Console App
 
 ## Project Overview
@@ -22,7 +26,7 @@ This will write to a file as JSON using `Newtonsoft.JSON` library and output to 
    ![](<../../.gitbook/assets/Create console app.png>)\
    Make sure it is **NOT** the (.Net Framework) or (.NET Core) version.
 3. Then lets name the project as "Application" and the Solution as "My First Console App"\
-   For more information about Solutions and Projects see: [solution-vs-project.md](../solution-vs-project.md "mention")\
+   For more information about Solutions and Projects see: [solution-vs-project.md](../understanding-c/solution-vs-project.md "mention")\
    ![](<../../.gitbook/assets/image (5).png>)
 4. Now select the framework, for this project we will use .NET 6.0 (LTS), however this should still work in later versions.\
    ![](../../.gitbook/assets/image.png)
