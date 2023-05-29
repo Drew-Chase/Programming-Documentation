@@ -1,6 +1,6 @@
 # Getters and Setters
 
-In C#, getters and setters are methods used in properties to control the access to private data members (fields) of a class. Getters are used to retrieve the value of a property, while setters are used to assign a new value to the property. Getters and setters provide a way to encapsulate the access to data and enable additional logic or validation to be executed.
+Getters and Setters are methods used in properties to control the access to private data members (fields) of a class. Getters are used to retrieve the value of a property, while setters are used to assign a new value to the property. Getters and setters provide a way to encapsulate the access to data and enable additional logic or validation to be executed.
 
 Here's an explanation of getters and setters with code examples:
 

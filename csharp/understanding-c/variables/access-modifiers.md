@@ -1,6 +1,6 @@
 # Access Modifiers
 
-In C#, access modifiers are keywords used to specify the accessibility or visibility of types (classes, structs, enums, etc.), members (fields, properties, methods, etc.), and other program elements. Access modifiers control the extent to which these elements can be accessed or used by other code within the program. Here are the different access modifiers in C#:
+Access modifiers are keywords used to specify the accessibility or visibility of types (classes, structs, enums, etc.), members (fields, properties, methods, etc.), and other program elements. Access modifiers control the extent to which these elements can be accessed or used by other code within the program. Here are the different access modifiers in C#:
 
 1. `public`: The `public` access modifier allows the associated type or member to be accessed from any part of the program, including outside the defining class or assembly.
 2. `private`: The `private` access modifier restricts the associated type or member to be accessible only within the defining class or struct. It cannot be accessed from outside the class or struct.

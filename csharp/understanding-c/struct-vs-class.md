@@ -1,6 +1,6 @@
 # Struct vs Class
 
-In C#, both structs and classes are used to create custom data types. The main difference between them is how they behave and how they are stored in memory.
+Both structs and classes are used to create custom data types. The main difference between them is how they behave and how they are stored in memory.
 
 Think of a struct as a small, self-contained object that holds simple data, like a single value. It's like having a little box that directly stores the data inside it. Structs are quick to create and use less memory because they are stored directly where they are needed.
 

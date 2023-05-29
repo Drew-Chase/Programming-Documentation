@@ -1,6 +1,6 @@
 # Classes
 
-In C#, a class is a fundamental concept used to define a blueprint for creating objects. It serves as a template or a blueprint that specifies the structure and behavior of objects that will be created based on that class. Objects created from a class are instances of that class and can have their own unique state and behavior.
+A class is a fundamental concept used to define a blueprint for creating objects. It serves as a template or a blueprint that specifies the structure and behavior of objects that will be created based on that class. Objects created from a class are instances of that class and can have their own unique state and behavior.
 
 Here are the key aspects of classes in C#:
 

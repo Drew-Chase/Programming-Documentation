@@ -1,6 +1,6 @@
 # Primitive Types
 
-In C#, primitive types are basic data types built into the language that represent fundamental values. They are used to store and manipulate simple values directly without relying on more complex objects. Here are the different primitive types in C# with examples:
+Primitive types are basic data types built into the language that represent fundamental values. They are used to store and manipulate simple values directly without relying on more complex objects. Here are the different primitive types in C# with examples:
 
 1.  `bool`: Represents a Boolean value that can be either `true` or `false`. Example:
 
