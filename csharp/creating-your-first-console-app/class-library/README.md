@@ -16,7 +16,7 @@ Next we are going to create a class library to hold the majority of our code.  T
 ## Folder Structure
 
 Now create two folders/namespaces inside the class library\
-See: [namespaces.md](../../understanding-c/namespaces.md "mention")
+See: [namespaces.md](../../undestanding-csharp/namespaces.md "mention")
 
 * Controller
 * Model
