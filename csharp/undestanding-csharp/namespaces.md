@@ -34,6 +34,13 @@ namespace AnotherNamespace
 }
 ```
 
+Then to use the namespace you would need to add:
+
+```csharp
+using MyNamespace;
+using AnotherNamespace;
+```
+
 In the above example, there are two namespaces, `MyNamespace` and `AnotherNamespace`, each containing a class with the same name, `MyClass` and `AnotherClass`, respectively. These classes can be used without conflict by qualifying them with their respective namespaces.
 
 Namespaces provide a way to organize, manage, and encapsulate code in C#, making it easier to develop and maintain large-scale applications and libraries.

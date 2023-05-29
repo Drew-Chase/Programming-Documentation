@@ -117,6 +117,12 @@ namespace MyNamespace
 }
 ```
 
+Then to create an instance of the class you would call:
+
+```csharp
+MyClass myClass = new MyClass();
+```
+
 This example demonstrates various parts that can be present in a class:
 
 * The class includes fields (`myField`), properties (`MyProperty`), constructors (`MyClass()`), methods (`MyMethod()`), events (`MyEvent`), indexers (`this[int index]`), a finalizer (`~MyClass()`), a nested class (`NestedClass`), operator overloading (`operator +`), a static constructor (`static MyClass()`), static fields (`StaticField`), static methods (`StaticMethod()`), and a constant (`MyConstant`).
