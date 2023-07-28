@@ -3,6 +3,8 @@ description: >-
   The CurseForge.NET library is a client library developed to interact with the
   CurseForge API, allowing users to search for and access information about
   Minecraft mods, modpacks, resource packs, and wo
+cover: ../../.gitbook/assets/CurseForge.jpg
+coverY: 0
 ---
 
 # CurseForge.NET Library

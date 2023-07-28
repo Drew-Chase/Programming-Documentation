@@ -3,6 +3,8 @@ description: >-
   The Modrinth.NET library, developed by LFInteractive LLC, provides a set of
   functionalities to interact with the Modrinth API. Modrinth is a platform that
   hosts Minecraft-related content such as mods,
+cover: ../../.gitbook/assets/Modrinth.jpg
+coverY: 0
 ---
 
 # Modrinth.NET Library

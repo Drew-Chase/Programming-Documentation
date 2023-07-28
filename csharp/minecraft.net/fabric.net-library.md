@@ -3,6 +3,8 @@ description: >-
   Fabric.NET is a library designed to handle the downloading and installation of
   Fabric loaders for Minecraft instances. It provides a simple and convenient
   way to manage Fabric loader versions and asso
+cover: ../../.gitbook/assets/Fabric.jpg
+coverY: 0
 ---
 
 # Fabric.NET Library

@@ -1,3 +1,8 @@
+---
+cover: ../../.gitbook/assets/Minecraft.jpg
+coverY: 0
+---
+
 # Minecraft.NET
 
 A comprehensive set of libraries

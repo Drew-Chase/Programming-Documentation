@@ -2,6 +2,8 @@
 description: >-
   This documentation provides an overview of the Minecraft Client library and
   its usage for managing Minecraft instances and starting the Minecraft client.
+cover: ../../.gitbook/assets/Minecraft.jpg
+coverY: 0
 ---
 
 # Minecraft.NET Library
