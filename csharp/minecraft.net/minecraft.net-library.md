@@ -4,7 +4,7 @@ description: >-
   its usage for managing Minecraft instances and starting the Minecraft client.
 ---
 
-# Minecraft Client Documentation
+# Minecraft.NET Library
 
 ### Prerequisites
 
