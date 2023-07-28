@@ -42,5 +42,3 @@
   * [spdlog](c++/spdlog/README.md)
     * [Getting Started](<C++/spdlog/Getting Started.md>)
     * [Patterns](c++/spdlog/patterns.md)
-
-## Group 1
