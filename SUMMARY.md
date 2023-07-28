@@ -32,7 +32,7 @@
       * [Nuget Packages](csharp/creating-your-first-console-app/console-app/nuget-packages.md)
       * [Main Method](csharp/creating-your-first-console-app/console-app/main-method.md)
   * [Minecraft.NET](csharp/minecraft.net/README.md)
-    * [README](csharp/minecraft.net/readme.md)
+    * [Minecraft Client Documentation](csharp/minecraft.net/minecraft-client-documentation.md)
     * [Modrinth.NET Library](csharp/minecraft.net/modrinth.net-library.md)
 * [Page](page.md)
 * [C++](C++/README.md)

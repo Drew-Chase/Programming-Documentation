@@ -1,4 +1,10 @@
-# README
+---
+description: >-
+  This documentation provides an overview of the Minecraft Client library and
+  its usage for managing Minecraft instances and starting the Minecraft client.
+---
+
+# Minecraft Client Documentation
 
 ### Prerequisites
 
