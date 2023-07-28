@@ -31,8 +31,14 @@
     * [Console App](csharp/creating-your-first-console-app/console-app/README.md)
       * [Nuget Packages](csharp/creating-your-first-console-app/console-app/nuget-packages.md)
       * [Main Method](csharp/creating-your-first-console-app/console-app/main-method.md)
+  * [Minecraft.NET](csharp/minecraft.net/README.md)
+    * [README](csharp/minecraft.net/readme.md)
+    * [Modrinth.NET Library](csharp/minecraft.net/modrinth.net-library.md)
+* [Page](page.md)
 * [C++](C++/README.md)
   * [VCPKG](C++/VCPKG.md)
   * [spdlog](c++/spdlog/README.md)
     * [Getting Started](<C++/spdlog/Getting Started.md>)
     * [Patterns](c++/spdlog/patterns.md)
+
+## Group 1
