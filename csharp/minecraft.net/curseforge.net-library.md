@@ -7,6 +7,14 @@ description: >-
 
 # CurseForge.NET Library
 
+### Installation
+
+CurseForge.NET can be installed using NuGet. Open your project in Visual Studio or any other compatible IDE and run the following command in the Package Manager Console:
+
+```powershell
+Install-Package CurseForge.NET
+```
+
 ### Getting Started
 
 To use the CurseForge.NET library, you need to create an instance of the `CurseforgeClient` class and pass your API key as a parameter to authenticate with the CurseForge API.

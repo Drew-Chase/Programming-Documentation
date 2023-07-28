@@ -18,7 +18,7 @@ Before using Fabric.NET, ensure that you have:
 
 Fabric.NET can be installed using NuGet. Open your project in Visual Studio or any other compatible IDE and run the following command in the Package Manager Console:
 
-```bash
+```powershell
 Install-Package Fabric.NET
 ```
 
