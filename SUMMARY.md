@@ -36,7 +36,6 @@
     * [Modrinth.NET Library](csharp/minecraft.net/modrinth.net-library.md)
     * [CurseForge.NET Library](csharp/minecraft.net/curseforge.net-library.md)
     * [Fabric.NET Library](csharp/minecraft.net/fabric.net-library.md)
-* [Page](page.md)
 * [C++](C++/README.md)
   * [VCPKG](C++/VCPKG.md)
   * [spdlog](c++/spdlog/README.md)
