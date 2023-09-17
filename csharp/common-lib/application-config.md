@@ -6,7 +6,7 @@ description: A singleton for your application configuration.
 
 The `AppConfigBase` class is a base class for configuration files in the Chase CommonLib library, designed for use in .NET 6.0 and later. It provides a foundation for managing configuration settings by extending the `ConfigurationFile<T>` class, where `T` is the derived configuration class. This base class implements a singleton pattern to ensure that only one instance of the configuration is created and managed during the application's lifetime.
 
-### Properties
+## Properties
 
 #### Instance
 
@@ -27,7 +27,7 @@ public string? Path { get; protected set; }
 * **Description**: Gets or sets the path to the configuration file on the disk.
 * **Usage**: This property is used to specify the location of the configuration file. It is set during the initialization process.
 
-### Methods
+## Methods
 
 #### Initialize
 
@@ -52,7 +52,7 @@ public override T? Load()
   * `IOException`: Thrown if the configuration file path is not set.
 * **Usage**: This method loads the configuration settings from the specified file into the derived configuration class. It also handles copying properties from the loaded instance to the singleton instance to ensure that the singleton instance reflects the latest configuration values.
 
-### Example Code
+## Example Code
 
 Here is an example of how to use the `AppConfigBase` class:
 
@@ -119,3 +119,38 @@ public class MyAppConfig : AppConfigBase<MyAppConfig>
 ```
 
 This allows you to control how your configuration properties are represented in the serialized JSON configuration file.
+
+### Example Class
+
+```csharp
+public class TestConfig : AppConfigBase<TestConfig>
+{
+    [JsonProperty("test_string")]
+    public string TestString { get; set; } = "Hello World!";
+    
+    [JsonProperty("test_int")]
+    public int TestInt { get; set; } = 123;
+    
+    [JsonProperty("test_bool")]
+    public bool TestBool { get; set; } = true;
+    
+    [JsonProperty("test_double")]
+    public double TestDouble { get; set; } = 123.456;
+    
+    [JsonProperty("test_float")]
+    public float TestFloat { get; set; } = 123.456f;
+    
+    [JsonProperty("test_decimal")]
+    public decimal TestDecimal { get; set; } = 123.456m;
+    
+    [JsonProperty("test_guid")]
+    public Guid TestGuid { get; set; } = Guid.NewGuid();
+    
+    [JsonIgnore]
+    public DateTime TestDateTime { get; set; } = DateTime.Now;
+    
+    [JsonProperty("test_time_span")]
+    public TimeSpan TestTimeSpan { get; set; } = TimeSpan.FromMinutes(5);
+}
+
+```
