@@ -4,92 +4,113 @@ description: To handle multiple configuration files.
 
 # Configuration File
 
-### Overview
+The `ConfigurationFile<T>` class is a part of the Chase CommonLib library, developed by LFInteractive LLC. It serves as a template for creating configuration files in JSON format for .NET 6.0+ applications. This class is designed to be used as a base class for specific configuration file implementations, allowing developers to easily create and manage configuration files with common functionality. The class includes features for saving and loading configuration data from disk, as well as events that notify when the configuration file is saved or loaded.
 
-The `ConfigurationFile<T>` class is a part of the Chase CommonLib library, provided by LFInteractive LLC. This class is designed for managing configuration files in .NET 6.0+ applications. It allows you to easily read and write configuration data stored in JSON format to a file.
-
-### Class Declaration
+### Class Overview
 
 ```csharp
-namespace Chase.CommonLib.FileSystem.Configuration;
-
-public class ConfigurationFile<T> : IDisposable
+namespace Chase.CommonLib.FileSystem.Configuration
+{
+    public class ConfigurationFile<T> where T : ConfigurationFile<T>, new()
+    {
+        // Class members and methods
+    }
+}
 ```
 
-#### Type Parameters
+#### Class Constraints
 
-* `T`: The type representing the content of the configuration file.
+The class is generic and takes a type parameter `T`, which must derive from `ConfigurationFile<T>` and have a parameterless constructor. This constraint ensures that any derived class adheres to the common functionality defined by this base class.
 
 ### Properties
 
-#### `Content`
+#### `Path` Property
 
-* Type: `T?`
-* Description: Gets or sets the content of the configuration file.
+```csharp
+[JsonIgnore]
+public string Path { get; set; } = "";
+```
 
-#### `KeepOpen`
+* This property represents the path to the configuration file on disk.
+* The `[JsonIgnore]` attribute is used to indicate that this property should be excluded when serializing the object to JSON. This allows developers to store additional information in the configuration file class without it being persisted to the file.
 
-* Type: `bool`
-* Description: Gets a value indicating whether the configuration file should be kept open for efficient read and write operations.
+### Events
 
-#### `FilePath`
+#### `ConfigurationSaved` Event
 
-* Type: `string`
-* Description: Gets the path to the configuration file.
+```csharp
+public event ConfigurationEventHandler? ConfigurationSaved;
+```
 
-### Constructors
+* This event is triggered when the configuration file is saved using the `Save()` method.
 
-#### `ConfigurationFile(string filePath, bool keepOpen = false)`
+#### `ConfigurationLoaded` Event
 
-* Parameters:
-  * `filePath`: The path to the configuration file.
-  * `keepOpen`: A boolean indicating whether to keep the file open for efficient read and write operations. Default is `false`.
-* Description: Initializes a new instance of the `ConfigurationFile<T>` class. It creates or opens the specified configuration file based on the provided file path and optional keepOpen parameter.
+```csharp
+public event ConfigurationEventHandler? ConfigurationLoaded;
+```
+
+* This event is triggered when the configuration file is loaded using the `Load()` method.
 
 ### Methods
 
-#### `Save()`
+#### `Save()` Method
 
-* Returns: `bool`
-* Description: Saves the contents of the `Content` property to the configuration file. If `KeepOpen` is set to `true`, it will use an open file stream for writing; otherwise, it will write directly to the file.
+```csharp
+public virtual void Save()
+```
 
-#### `Load()`
+* This method saves the current configuration object to the specified file path.
+* It checks if the `Path` property is set and raises an exception if it is not.
+* The configuration object is serialized to JSON format with indented formatting and saved to the specified file path.
+* After saving, the `ConfigurationSaved` event is invoked to notify listeners.
 
-* Returns: `T?`
-* Description: Loads the contents of the configuration file into the `Content` property. If the file fails to load or doesn't exist, it returns the original content.
+#### `Load()` Method
 
-#### `Dispose()`
+```csharp
+public virtual T? Load()
+```
 
-* Description: Releases all resources used by the `ConfigurationFile<T>` object. This method saves the configuration file (if necessary) and disposes of the underlying file stream.
+* This method loads a configuration object from the specified file path.
+* It checks if the `Path` property is set and raises an exception if it is not.
+* If the file does not exist, it creates a new configuration file by calling the `Save()` method.
+* If the file exists, it reads the JSON content, deserializes it into the specified type `T`, and sets the `Path` property of the loaded object.
+* After loading, the `ConfigurationLoaded` event is invoked to notify listeners.
+* The method returns the loaded configuration object or `null` if loading fails.
 
 ### Example Usage
 
+Here's an example of how to use the `ConfigurationFile<T>` class and how to apply the `[JsonIgnore]` and `[JsonProperty]` attributes:
+
 ```csharp
 using Chase.CommonLib.FileSystem.Configuration;
+using Newtonsoft.Json;
 
-// Define a class to represent your configuration data
-public class AppConfig
+public class MyAppConfiguration : ConfigurationFile<MyAppConfiguration>
 {
-    public string ApiKey { get; set; }
-    public int MaxRetryAttempts { get; set; }
+    // Add your application-specific configuration properties here
+    public string AppName { get; set; } = "MyApp";
+    
+    [JsonIgnore] // Exclude this property from serialization
+    public string SecretKey { get; set; } = "supersecret";
+    
+    [JsonProperty("LoggingLevel")] // Rename the property in the output JSON
+    public string LogLevel { get; set; } = "Info";
 }
 
-// Create a ConfigurationFile instance
-var configFilePath = "app-config.json";
-var config = new ConfigurationFile<AppConfig>(configFilePath);
+// Usage
+MyAppConfiguration config = new MyAppConfiguration();
+config.Path = "appconfig.json";
 
-// Load the configuration from the file (or use default values if the file doesn't exist)
-var appConfig = config.Load();
-
-// Modify the configuration
-appConfig.ApiKey = "your-api-key";
-appConfig.MaxRetryAttempts = 3;
-
-// Save the modified configuration back to the file
+// Save the configuration to disk
 config.Save();
 
-// Dispose of the ConfigurationFile when done
-config.Dispose();
+// Load the configuration from disk
+MyAppConfiguration loadedConfig = config.Load();
+
+// Access configuration properties
+string appName = loadedConfig.AppName;
+string logLevel = loadedConfig.LogLevel;
 ```
 
-In this example, we create a `ConfigurationFile` instance for managing an `AppConfig` object. We load the configuration from the file, make changes, and then save it back to the file. Finally, we dispose of the `ConfigurationFile` object to release resources and ensure the changes are persisted.
+In this example, we create a derived configuration class `MyAppConfiguration` with additional properties. We use `[JsonIgnore]` to exclude the `SecretKey` property from serialization and `[JsonProperty]` to rename the `LogLevel` property in the output JSON.

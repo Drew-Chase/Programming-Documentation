@@ -4,107 +4,118 @@ description: A singleton for your application configuration.
 
 # Application Config
 
-The `AppConfigBase` class is a base class for configuration files in the Chase CommonLib library. It provides a framework for managing and handling configuration data. This class is designed to be extended by specific configuration classes that define their own configuration properties and behavior.
-
-### Namespace
-
-```csharp
-namespace Chase.CommonLib.FileSystem.Configuration
-```
-
-### Inheritance
-
-* `AppConfigBase` is the base class for all configuration classes in the library.
-
-### Constructor
-
-#### `public AppConfigBase()`
-
-* Initializes a new instance of the `AppConfigBase` class. This constructor is protected to enforce the Singleton pattern.
+The `AppConfigBase` class is a base class for configuration files in the Chase CommonLib library, designed for use in .NET 6.0 and later. It provides a foundation for managing configuration settings by extending the `ConfigurationFile<T>` class, where `T` is the derived configuration class. This base class implements a singleton pattern to ensure that only one instance of the configuration is created and managed during the application's lifetime.
 
 ### Properties
 
-#### `public static AppConfigBase Instance { get; protected set; }`
+#### Instance
 
-* Gets the singleton instance of the configuration file.
+```csharp
+[JsonIgnore]
+public static T Instance { get; }
+```
 
-#### `public string Path { get; set; }`
+* **Description**: Gets the singleton instance of the configuration file.
+* **Usage**: This property allows you to access the configuration settings throughout your application using the singleton pattern. It ensures that there is only one instance of the configuration, promoting consistency in configuration values.
 
-* Gets or sets the configuration file path.
+#### Path
 
-### Events
+```csharp
+public string? Path { get; protected set; }
+```
 
-#### `public event ConfigurationEventHandler? ConfigurationSaved`
-
-* Event that is fired when the configuration file is saved. Subscribers can handle this event to perform actions after the configuration is saved.
-
-#### `public event ConfigurationEventHandler? ConfigurationLoaded`
-
-* Event that is fired when the configuration file is loaded. Subscribers can handle this event to perform actions after the configuration is loaded.
+* **Description**: Gets or sets the path to the configuration file on the disk.
+* **Usage**: This property is used to specify the location of the configuration file. It is set during the initialization process.
 
 ### Methods
 
-#### `public virtual void Initialize(string path)`
+#### Initialize
 
-* Initializes and loads the configuration file.
-  * `path`: A string representing the file path of the configuration file to load.
+```csharp
+public virtual void Initialize(string path)
+```
 
-#### `public virtual void Save()`
+* **Description**: Initializes and loads the configuration file from the specified path.
+* **Parameters**:
+  * `path` (string): The path to the configuration file.
+* **Usage**: Call this method to initialize the configuration file. It sets the `Path` property and loads the configuration file from the provided path. This method should be called once at the beginning of your application.
 
-* Saves the configuration file to disk.
-  * Throws `IOException` if the configuration file path is not set.
+#### Load
 
-#### `public virtual void Load()`
+```csharp
+public override T? Load()
+```
 
-* Loads the configuration file from disk.
-  * Throws `IOException` if the configuration file path is not set.
+* **Description**: Loads the configuration file from disk.
+* **Returns**: The loaded instance of the derived configuration class.
+* **Exceptions**:
+  * `IOException`: Thrown if the configuration file path is not set.
+* **Usage**: This method loads the configuration settings from the specified file into the derived configuration class. It also handles copying properties from the loaded instance to the singleton instance to ensure that the singleton instance reflects the latest configuration values.
 
-### Example Usage
+### Example Code
+
+Here is an example of how to use the `AppConfigBase` class:
 
 ```csharp
 using Chase.CommonLib.FileSystem.Configuration;
-using System;
 
-namespace YourNamespace
+// Define your derived configuration class
+public class MyAppConfig : AppConfigBase<MyAppConfig>
 {
-    // Define a custom configuration class that extends AppConfigBase
-    public class CustomConfig : AppConfigBase
+    // Define your configuration properties here
+    public string ApiKey { get; set; }
+    public int MaxConnections { get; set; }
+}
+
+// In your application code:
+public class Program
+{
+    public static void Main()
     {
-        public string SomeSetting { get; set; }
+        // Initialize the configuration
+        MyAppConfig.Instance.Initialize("config.json");
 
-        [JsonProperty("another_setting")]
-        public int AnotherSetting { get; set; }
+        // Access configuration values
+        string apiKey = MyAppConfig.Instance.ApiKey;
+        int maxConnections = MyAppConfig.Instance.MaxConnections;
 
-        [JsonIgnore]
-        public int IgnoredSetting { get; set; }
-    }
+        // Modify configuration values (if needed)
+        MyAppConfig.Instance.MaxConnections = 10;
 
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Create an instance of your custom configuration class
-            var customConfig = new CustomConfig();
-
-            // Set the path to the configuration file
-            customConfig.Initialize("config.json");
-
-            // Modify configuration settings
-            customConfig.SomeSetting = "Hello, World!";
-            customConfig.AnotherSetting = 42;
-
-            // Save the configuration to disk
-            customConfig.Save();
-
-            // Load the configuration from disk
-            customConfig.Load();
-
-            // Access configuration settings
-            Console.WriteLine($"SomeSetting: {customConfig.SomeSetting}");
-            Console.WriteLine($"AnotherSetting: {customConfig.AnotherSetting}");
-        }
+        // Save the updated configuration (if needed)
+        MyAppConfig.Instance.Save();
     }
 }
 ```
 
-In this example, we create a custom configuration class `CustomConfig` that extends `AppConfigBase`. We initialize, modify, save, and load configuration settings using this custom class.
+In the above example, we first define a derived configuration class `MyAppConfig` based on `AppConfigBase`. We define configuration properties within this class.
+
+In the `Main` method, we initialize the configuration using `Initialize`, access configuration values, and optionally modify and save them. The `Instance` property provides access to the singleton instance of the configuration.
+
+By using this class, you can easily manage your application's configuration settings while ensuring consistency and singleton behavior.
+
+#### Ignoring Properties
+
+To ignore specific properties during serialization, you can use the `[JsonIgnore]` attribute. For example, if you want to ignore a property named `IgnoreMe`, you can do the following:
+
+```csharp
+public class MyAppConfig : AppConfigBase<MyAppConfig>
+{
+    [JsonIgnore]
+    public string IgnoreMe { get; set; }
+}
+```
+
+#### Changing Property Names in JSON Output
+
+To change the property name in the JSON output, you can use the `[JsonProperty]` attribute. For example, if you want to change the property name `ApiKey` to `api_key` in the JSON output, you can do the following:
+
+```csharp
+public class MyAppConfig : AppConfigBase<MyAppConfig>
+{
+    [JsonProperty("api_key")]
+    public string ApiKey { get; set; }
+}
+```
+
+This allows you to control how your configuration properties are represented in the serialized JSON configuration file.
