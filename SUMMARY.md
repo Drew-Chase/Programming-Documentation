@@ -40,6 +40,7 @@
     * [Configuration File](csharp/common-lib/configuration-file.md)
     * [Application Config](csharp/common-lib/application-config.md)
     * [Database File](csharp/common-lib/database-file.md)
+    * [Crypt Class](csharp/common-lib/crypt-class.md)
 * [C++](C++/README.md)
   * [VCPKG](C++/VCPKG.md)
   * [spdlog](c++/spdlog/README.md)
