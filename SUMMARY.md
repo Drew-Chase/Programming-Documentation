@@ -6,6 +6,7 @@
   * [Understanding C#](csharp/undestanding-csharp/README.md)
     * [Namespaces](csharp/undestanding-csharp/namespaces.md)
     * [Classes](csharp/undestanding-csharp/classes.md)
+    * [Enum](csharp/undestanding-csharp/enum.md)
     * [Variables](csharp/undestanding-csharp/variables/README.md)
       * [Static Types](csharp/undestanding-csharp/variables/static-types.md)
       * [Primitive Types](csharp/undestanding-csharp/variables/primitive-types.md)
