@@ -47,6 +47,7 @@
     * [Database File](csharp/common-lib/database-file.md)
     * [Crypt Class](csharp/common-lib/crypt-class.md)
 * [C++](C++/README.md)
+  * [cclip](c++/cclip.md)
   * [VCPKG](C++/VCPKG.md)
   * [spdlog](c++/spdlog/README.md)
     * [Getting Started](<C++/spdlog/Getting Started.md>)
