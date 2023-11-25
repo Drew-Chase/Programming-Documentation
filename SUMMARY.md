@@ -47,6 +47,8 @@
     * [Database File](csharp/common-lib/database-file.md)
     * [Crypt Class](csharp/common-lib/crypt-class.md)
 * [C++](C++/README.md)
+  * [Networking](c++/networking/README.md)
+    * [Windows Socket (Client)](c++/networking/windows-socket-client.md)
   * [cclip](c++/cclip.md)
   * [VCPKG](C++/VCPKG.md)
   * [spdlog](c++/spdlog/README.md)
